@@ -26,7 +26,7 @@ game making
 
 # Wireframe *Figma*
 
-####  I have chosen two step process and have chosen the better bold  Casio look alike
+#### 
 
 <!-- 
   # h1
