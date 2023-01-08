@@ -23,7 +23,7 @@ This game is being built with the SEV9 Cohort! I'm gonna build the most awesomme
 - interface screen
 -  Keyboard function
 -  Cool theme
-
+# Play instructions
 # Wireframe *Figma*
 
 #### 
