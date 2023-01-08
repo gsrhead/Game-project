@@ -23,7 +23,11 @@ This game is being built with the SEV9 Cohort! I'm gonna build the most awesomme
 - interface screen
 -  Keyboard function
 -  Cool theme
-# Play instructions
+# Play instructions#
+you can use the keyboard
+mouse
+left,write,up,down,
+also on the keybad WASD similiar to using mouse and instead the scroll button arrow key
 # Wireframe *Figma*
 
 #### 
