@@ -33,9 +33,9 @@ also on the keybad WASD similiar to using mouse and instead the scroll button ar
 game making
 This game is being built with the SEV9 Cohort! I'm gonna build the most awesomme game of all time.
 # MVP - *minimum viable product*
-![DALL·E 2023-01-09 00 46 14 - car racing game in pc](https://user-images.githubusercontent.com/115747784/211247404-4be06cc5-14a2-45d1-bee4-2da7ee711c68.png)
 
-  - Functional
+  - Functional![DALL·E 2023-01-09 00 46 14 - car racing game in pc](https://user-images.githubusercontent.com/115747784/211247741-a31c7c4a-f16a-49b3-94ce-037c0892027d.jpg)
+
    - clicking
    - jumping
     - seeking
