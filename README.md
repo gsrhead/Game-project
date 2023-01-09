@@ -33,7 +33,8 @@ also on the keybad WASD similiar to using mouse and instead the scroll button ar
 game making
 This game is being built with the SEV9 Cohort! I'm gonna build the most awesomme game of all time.
 # MVP - *minimum viable product*
-  <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FxPjUaZBKQX230MbDJni3v6%2FCar-Racing-%257C-Interactive-Components-(Community)%3Fnode-id%3D13%253A0%26scaling%3Dmin-zoom%26page-id%3D11%253A531" allowfullscreen></iframe>
+![DALL·E 2023-01-09 00 46 14 - car racing game in pc](https://user-images.githubusercontent.com/115747784/211247404-4be06cc5-14a2-45d1-bee4-2da7ee711c68.png)
+
   - Functional
    - clicking
    - jumping
@@ -142,4 +143,4 @@ ___
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-new license 
+#MIT license 
