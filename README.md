@@ -32,7 +32,7 @@ press the arrow keys to get started
 Created a wireframe for the game 
 ![car driver](https://user-images.githubusercontent.com/115747784/212222647-9ec17bcb-88da-4655-a97d-62024bb8d828.png)
 
-this is my goal to ahieve a 3d look from scratch   - Functional![DALL·E 2023-01-09 00 46 14 - car racing game in pc](https://user-images.githubusercontent.com/115747784/211247741-a31c7c4a-f16a-49b3-94ce-037c0892027d.jpg)
+this is my goal to achieve a 3d look from scratch   - Functional![DALL·E 2023-01-09 00 46 14 - car racing game in pc](https://user-images.githubusercontent.com/115747784/211247741-a31c7c4a-f16a-49b3-94ce-037c0892027d.jpg)
 
 # License
 MIT License - [MIT](https://choosealicense.com/licenses/mit/)
