@@ -3,7 +3,6 @@
 
 # MVP - *minimum viable product*
   
--A sprite for the player car
 - Controls for the car using the arrow keys
 - 5-10 random traffic car sprites
 - Consistent movement of traffic towards the player
