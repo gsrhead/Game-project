@@ -15,10 +15,14 @@
 - A leaderboard to compete against other players
 - A start screen for the game
 
-We have also created a wireframe for the game using Figma and our goal is to achieve a 3D look from scratch.
-The game is licensed under the MIT License. Feel free to fork, modify and distribute the code accordingly.
+# Play *instructions*
+Welcome to the ultimate car racing game! Use either your keyboard or mouse to maneuver your car across the lanes and avoid traffic. To start the game, click the "Start" button or press the "Enter" key. If at any point you crash and need to restart, simply press the "R" key to begin again. Get ready to race and have fun!"
+
+
+
 # Wireframe *Figma*
 Created a wireframe for the game 
+We have also created a wireframe for the game using Figma and our goal is to achieve a 3D look from scratch.
 ![Screenshot (1)](https://user-images.githubusercontent.com/115747784/212224916-24e04ae2-1c56-4bc0-b9f8-ddd1f1ff1c90.png)
 
 
