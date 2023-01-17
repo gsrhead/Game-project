@@ -1,0 +1,109 @@
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.hide {
+  display: none;
+}
+.car {
+  height: 100px;
+  border-radius: 8px;
+  width: 90px;
+  position: absolute;
+  bottom: 120px;
+  background: url(img_player.png);
+  background-repeat: no-repeat;
+  background-size: 65px 110px;
+}
+.carGame {
+  width: 100%;
+  height: 1050px;
+  background: url(img_sky.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-size: cover;
+}
+.lines {
+  width: 15px;
+  height: 100px;
+  background: rgb(200, 190, 10);
+  position: absolute;
+  margin-left: 450px;
+}
+.gameArea {
+  height: 99vh;
+  width: 900px;
+  background: #000000;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  border-right: 15px dashed #ffffff;
+  border-left: 15px dashed #ffffff;
+}
+.enemy {
+  /*background-color: blue;*/
+  height: 105px;
+  border-radius: 1px;
+  width: 92px;
+  position: relative;
+  bottom: 150px;
+  background: url(img_trucks.png);
+  background-repeat: no-repeat;
+  background-size: 90px 100px;
+}
+.score {
+  position: absolute;
+  top: 10px;
+  left: 40px;
+  background: #000000;
+  widows: 30px;
+  height: 200px;
+  width: 140px;
+  text-align: center;
+  font-size: 1.5em;
+  color: rgb(249, 9, 9);
+  font-family: fantasy;
+  box-shadow: 25px 25px 5px #777;
+}
+.startScreen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #000000;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 1;
+  text-align: center;
+  border: 1px solid #ff6b6b;
+  padding: 15px;
+  margin: auto;
+  width: 50%;
+  cursor: pointer;
+  font-family: carfont;
+  letter-spacing: 5;
+  font-size: 20px;
+  word-spacing: 3;
+  line-height: 30px;
+  text-transform: upper;
+  box-shadow: 0 5px 5px #777;
+}
+#leaderboard {
+  position: absolute;
+  top: 500px;
+  left: 40px;
+  background: #000000;
+  widows: 30px;
+  height: 400px;
+  width: 400px;
+  text-align: center;
+  font-size: 1.5em;
+  color: rgb(255, 249, 249);
+  font-family: fantasy;
+  box-shadow: 25px 25px 5px #777;
+}
+
+#leaderboard div {
+  margin: 10px 0;
+}
