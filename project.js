@@ -1,23 +1,39 @@
 let scoreBoard = [];
-let playerName = "";
+let playerName = " ";
+let gameInProgress = false;
+const previousScores = localStorage.getItem("scores") !== null;
 
-// write some code to populate the scoreboard if there are scroes that exist in local storage
+if (previousScores) {
+  scoreBoard = JSON.parse(localStorage.getItem("scores"));
+  console.log(scoreBoard);
+  updateScoreboard(scoreBoard);
+}
+
+// write some code to populate the scoreboard if there are scores that exist in local storage
 //^^ ADD AND RETRIEve
 
+function updateScoreboard(arr) {
+  for (let player of scoreBoard) {
+    let leaderboard = document.querySelector("#leaderboard-list");
+    let listitem = document.createElement("li");
+    listitem.innerHTML = player.name + " " + player.score; //display score
+    leaderboard.appendChild(listitem);
+  }
+}
 
 function saveScore(playerName) {
   let scoreObject = {
     name: playerName,
-    score: player.score,
+    score: player.score, //saving score called sco
   };
   scoreBoard.push(scoreObject);
   console.log(scoreBoard);
   let leaderboard = document.querySelector("#leaderboard-list");
-let listitem = document.createElement("li")
-listitem.innerHTML = playerName + player.score
-leaderboard.appendChild(listitem);
-// set local storage scoreboard appending our new score
-
+  let listitem = document.createElement("li");
+  listitem.innerHTML = playerName + " " + player.score; // display score
+  leaderboard.appendChild(listitem);
+  // set local storage scoreboard appending our new score
+  localStorage.setItem("scores", JSON.stringify(scoreBoard));
 }
 
 const score = document.querySelector(".score");
@@ -26,14 +42,17 @@ const gameArea = document.querySelector(".gameArea"); //HTML FILES CONNECTING WH
 
 document.addEventListener("keydown", (e) => {
   //storing the name after loss.
-  if (e.keyCode == 13) {
+  if (e.keyCode == 13 && !gameInProgress) {
     if (document.querySelector("#inputBox")) {
       playerName = document.querySelector("#inputBox").value;
       if (playerName.length > 0) {
         saveScore(playerName);
       }
     }
-    start(); // this will input in the log/
+
+    start();
+
+    // this will input in the log/
   }
 });
 
@@ -93,6 +112,7 @@ function moveLines() {
 }
 
 function endGame() {
+  gameInProgress = false;
   let inputBox = document.createElement("input");
   player.start = false;
   startScreen.classList.remove("hide");
@@ -103,7 +123,8 @@ function endGame() {
 }
 
 /////////////////////////////////////////////////////////////////////////////
-function moveEnemy(car) { // this for loop
+function moveEnemy(car) {
+  // this for loop
   let enemy = document.querySelectorAll(".enemy");
   enemy.forEach(function (item) {
     if (isCollide(car, item)) {
@@ -119,7 +140,7 @@ function moveEnemy(car) { // this for loop
 }
 window.requestAnimationFrame(gamePlay);
 //console.log(player.score++);
-player.score++;
+// player.score++;
 if (player.score >= highest) {
   highest = player.score;
 }
@@ -138,12 +159,13 @@ function gamePlay() {
   let road = gameArea.getBoundingClientRect();
   /*console.log(road);*/
 
+  //ths controls the movements for the arrow down keys calls the function if statement/
   if (player.start) {
     moveLines();
     moveEnemy(car);
 
     if (keys.ArrowUp && player.y > road.top + 70) {
-      player.y -= player.speed; 
+      player.y -= player.speed;
     }
     if (keys.ArrowDown && player.y < road.bottom - 85) {
       player.y += player.speed;
@@ -157,65 +179,59 @@ function gamePlay() {
     car.style.top = player.y + "px";
     car.style.left = player.x + "px";
 
-    window.requestAnimationFrame(gamePlay);
+    window.requestAnimationFrame(gamePlay); // this is required for continues loops in the game
     //console.log(player.score++);
-    player.score++;
+    player.score++; // players score is incremented!!
     if (player.score >= highest) {
       highest = player.score;
     }
     score.innerHTML =
-      "Your Score:" + player.score + "<br>1212<br>" + "Highest Score:" + highest;
+      "Your Score:" + player.score + "<br><br>" + "Highest Score:" + highest;
   }
 }
 function Reset() {
   highest = 0;
 }
+
 function start() {
-  //gamearea.classList.remove('hide');
-  console.log("ran");
-  let playerName = document.querySelector("#inputBox").value;
-  console.log(playerName);
-  startscreen.classList.add("hide");
-  gamearea.innerHTML = "";
-  player.start = true;
-  player.score = 0;
-  window.requestAnimationFrame(gamePlay);
-}
-function start() {
+  gameInProgress = true;
+  // same as for this.
   //gameArea.classList.remove('hide');
+  console.log("ran2");
   startScreen.classList.add("hide");
   gameArea.innerHTML = "";
   player.start = true;
   player.score = 0;
   window.requestAnimationFrame(gamePlay);
-
-  for (x = 0; x < 6; x++) {
-    let roadLine = document.createElement("div");
-    roadLine.setAttribute("class", "lines");
-    roadLine.y = x * 300;
+  //
+  for (x = 0; x < 4; x++) {
+    //this also creates the road lines ./
+    let roadLine = document.createElement("div"); // gets called
+    roadLine.setAttribute("class", "lines"); // appends it to the game area element
+    roadLine.y = x * 300; // this is the pixels
     roadLine.style.top = roadLine.y + "px";
     gameArea.appendChild(roadLine);
   }
 
-  let car = document.createElement("div");
+  let car = document.createElement("div"); //
   car.setAttribute("class", "car");
   /*car.innerText="Hey I am car";*/
-  gameArea.appendChild(car);
+  gameArea.appendChild(car); //called
 
-  player.x = car.offsetLeft;
+  player.x = car.offsetLeft; // cars current top offset
   player.y = car.offsetTop;
 
   /* console.log(car.offsetTop);
                 console.log(car.offsetLeft);*/
 
-  for (x = 0; x < 4; x++) { 
+  for (x = 0; x < 3; x++) {
     let enemyCar = document.createElement("div");
-    enemyCar.setAttribute("class", "enemy");// this loops creates element a
+    enemyCar.setAttribute("class", "enemy"); // this loops creates element a
     // to run and generates a new element color car overtime.
-    enemyCar.y = (x + 1) * 350 * -2;
+    enemyCar.y = (x + 1) * 150 * -2;
     enemyCar.style.top = enemyCar.y + "px";
     enemyCar.style.backgroundColor = randomColor();
-    enemyCar.style.left = Math.floor(Math.random() * 5550) + "px";
+    enemyCar.style.left = Math.floor(Math.random() * 550) + "px";
     gameArea.appendChild(enemyCar);
   }
 } // this will call from to the for loop up top^^^/
@@ -228,10 +244,11 @@ function randomColor() {
 }
 
 function pad(val) {
-  let  valString = val + "";
+  let valString = val + "";
   if (valString.length < 1) {
     return "66" + valString;
   } else {
     return valString;
   }
 }
+//
