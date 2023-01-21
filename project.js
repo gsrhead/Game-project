@@ -164,7 +164,7 @@ function moveCoin(car) {
     // this code provied
     if (isCollide(car, item)) {
       const coin = document.getElementById("coin");
-      coin.volume = 0.1; // sets the volume to 50%
+      coin.volume = 0.11; // sets the volume to 50%
       coin.play();
       player.score += 100;
       item.remove();
