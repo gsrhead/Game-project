@@ -142,7 +142,8 @@ function moveEnemy(car) {
   let enemy = document.querySelectorAll(".enemy");
   enemy.forEach(function (item) {
     if (isCollide(car, item)) {
-      const thwomp = document.getElementById("thwomp");
+      const thwomp = document.getElementById("thwomp"); //lowering the volume
+      thwomp.volume = 0.1; // sets the volume to 50%
       thwomp.play();
       endGame();
       clearInterval(coinSpawnLoop);
@@ -160,8 +161,10 @@ function moveCoin(car) {
   // this for loop
   let coins = document.querySelectorAll(".coin");
   coins.forEach(function (item) {
+    // this code provied
     if (isCollide(car, item)) {
       const coin = document.getElementById("coin");
+      coin.volume = 0.1; // sets the volume to 50%
       coin.play();
       player.score += 100;
       item.remove();
