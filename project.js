@@ -2,7 +2,7 @@ let scoreBoard = [];
 let playerName = " ";
 let gameInProgress = false;
 const previousScores = localStorage.getItem("scores") !== null;
-
+// the calling for loops if statements
 if (previousScores) {
   scoreBoard = JSON.parse(localStorage.getItem("scores"));
   console.log(scoreBoard);
@@ -13,7 +13,9 @@ if (previousScores) {
 //^^ ADD AND RETRIEve
 
 function updateScoreboard(arr) {
-  for (let player of scoreBoard) {
+  scoreBoard = scoreBoard.sort((a, b) => b.score - a.score);
+  console.log("sort");
+  for (let player of scoreBoard.slice(0, 6)) {
     let leaderboard = document.querySelector("#leaderboard-list");
     let listitem = document.createElement("li");
     listitem.innerHTML = player.name + " " + player.score; //display score
@@ -34,6 +36,8 @@ function saveScore(playerName) {
   leaderboard.appendChild(listitem);
   // set local storage scoreboard appending our new score
   localStorage.setItem("scores", JSON.stringify(scoreBoard));
+  leaderboard.innerHTML = "";
+  updateScoreboard();
 }
 
 const score = document.querySelector(".score");
@@ -56,8 +60,8 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-let player = { speed: 10, score: 0 };
-let highest = 0;
+let player = { speed: 7, score: 0 };
+let highest = 250;
 
 let keys = {
   ArrowUp: false,
@@ -79,8 +83,18 @@ function keyUp(e) {
 }
 
 function isCollide(a, b) {
+  //
   aRect = a.getBoundingClientRect();
   bRect = b.getBoundingClientRect();
+  if (
+    !(
+      aRect.bottom < bRect.top ||
+      aRect.top > bRect.bottom ||
+      aRect.right < bRect.left ||
+      aRect.left > bRect.right
+    )
+  ) {
+  }
   return !(
     aRect.bottom < bRect.top ||
     aRect.top > bRect.bottom ||
@@ -128,11 +142,34 @@ function moveEnemy(car) {
   let enemy = document.querySelectorAll(".enemy");
   enemy.forEach(function (item) {
     if (isCollide(car, item)) {
+      const thwomp = document.getElementById("thwomp");
+      thwomp.play();
       endGame();
+      clearInterval(coinSpawnLoop);
     }
     if (item.y >= 950) {
       item.y = -100;
       item.style.left = Math.floor(Math.random() * 450) + "px";
+    }
+    item.y += player.speed;
+    item.style.top = item.y + "px";
+  });
+}
+/////////////////////////////////////////////
+function moveCoin(car) {
+  // this for loop
+  let coins = document.querySelectorAll(".coin");
+  coins.forEach(function (item) {
+    if (isCollide(car, item)) {
+      const coin = document.getElementById("coin");
+      coin.play();
+      player.score += 100;
+      item.remove();
+      // play a sound byte
+    }
+    if (item.y >= 950) {
+      item.y = -100;
+      item.style.left = Math.floor(Math.random() * 150) + "px";
     }
     item.y += player.speed;
     item.style.top = item.y + "px";
@@ -156,6 +193,7 @@ window.requestAnimationFrame(gamePlay);
 
 function gamePlay() {
   let car = document.querySelector(".car");
+  let coin = document.querySelector(".coin");
   let road = gameArea.getBoundingClientRect();
   /*console.log(road);*/
 
@@ -163,6 +201,7 @@ function gamePlay() {
   if (player.start) {
     moveLines();
     moveEnemy(car);
+    moveCoin(car);
 
     if (keys.ArrowUp && player.y > road.top + 70) {
       player.y -= player.speed;
@@ -204,7 +243,7 @@ function start() {
   player.score = 0;
   window.requestAnimationFrame(gamePlay);
   //
-  for (x = 0; x < 4; x++) {
+  for (x = 0; x < 3; x++) {
     //this also creates the road lines ./
     let roadLine = document.createElement("div"); // gets called
     roadLine.setAttribute("class", "lines"); // appends it to the game area element
@@ -225,15 +264,36 @@ function start() {
                 console.log(car.offsetLeft);*/
 
   for (x = 0; x < 3; x++) {
+    // if first or last iterration x = 2 x = 0 creat  enemy car
     let enemyCar = document.createElement("div");
     enemyCar.setAttribute("class", "enemy"); // this loops creates element a
     // to run and generates a new element color car overtime.
-    enemyCar.y = (x + 1) * 150 * -2;
+    enemyCar.y = (x + 1) * 50 * 2;
     enemyCar.style.top = enemyCar.y + "px";
     enemyCar.style.backgroundColor = randomColor();
-    enemyCar.style.left = Math.floor(Math.random() * 550) + "px";
+    enemyCar.style.left = Math.floor(Math.random() * 1500) + "px";
     gameArea.appendChild(enemyCar);
+    let coinItem = document.createElement("div");
+    coinItem.setAttribute("class", "coin"); // this loops creates element a
+    // to run and generates a new element color car overtime.
+    coinItem.y = (x + 1) * 150 * -2;
+    coinItem.style.top = coinItem.y + "px";
+    coinItem.style.backgroundColor = randomColor();
+    coinItem.style.left = Math.floor(Math.random() * 550) + "px";
+    gameArea.appendChild(coinItem);
   }
+  let coinSpawnLoop = setInterval(() => {
+    for (x = 0; x < 4; x++) {
+      let coinItem = document.createElement("div");
+      coinItem.setAttribute("class", "coin"); // this loops creates element a
+      // to run and generates a new element color car overtime.
+      coinItem.y = (x + 1) * 140 * -1;
+      coinItem.style.top = coinItem.y + "px";
+      coinItem.style.backgroundColor = randomColor();
+      coinItem.style.left = Math.floor(Math.random() * 130) + "px";
+      gameArea.appendChild(coinItem);
+    }
+  }, 10000);
 } // this will call from to the for loop up top^^^/
 function randomColor() {
   function c() {
@@ -251,4 +311,44 @@ function pad(val) {
     return valString;
   }
 }
-//
+const rainContainer = document.querySelector(".rain-container");
+
+// background Colors for the raindrop
+const background = [
+  "linear-gradient(transparent, aqua)",
+  "linear-gradient(transparent, blue)",
+  "linear-gradient(transparent, clear)",
+  "linear-gradient(transparent, white)",
+  "linear-gradient(transparent, yellow)",
+];
+
+const amount = 100; // amount of raindops
+let i = 0;
+
+// Looping and creating the raindrop then adding to the rainContainer
+while (i < amount) {
+  //  Creating and Element
+  const drop = document.createElement("i");
+
+  //   CSS Properties for raindrop
+  const raindropProperties = {
+    width: Math.random() * 5 + "px",
+    positionX: Math.floor(Math.random() * window.innerWidth) + "px",
+    delay: Math.random() * -0 + "s",
+    duration: Math.random() * 5 + "s",
+    bg: background[Math.floor(Math.random() * background.length)],
+    opacity: Math.random() + 0.2,
+  };
+
+  //   Setting Styles for raindrop
+  drop.style.width = raindropProperties.width;
+  drop.style.left = raindropProperties.positionX;
+  drop.style.animationDelay = raindropProperties.delay;
+  drop.style.animationDuration = raindropProperties.duration;
+  drop.style.background = raindropProperties.bg;
+  drop.style.opacity = raindropProperties.opacity;
+
+  //   Appending the raindrop in the raindrop container
+  rainContainer.appendChild(drop);
+  i++;
+}
