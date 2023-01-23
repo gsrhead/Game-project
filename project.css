@@ -24,6 +24,7 @@ body {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-size: cover;
+  overflow: hidden;
 }
 .lines {
   width: 15px;
@@ -35,7 +36,7 @@ body {
 .gameArea {
   height: 99vh;
   width: 900px;
-  background: #3b3232c5;
+  background: #000000c5;
   margin: auto;
   position: relative;
   overflow: hidden;
@@ -62,9 +63,8 @@ body {
   width: 140px;
   text-align: center;
   font-size: 1.5em;
-  color: rgb(231, 231, 231);
+  color: rgb(255, 255, 255);
   font-family: fantasy;
-
 }
 .startScreen {
   position: absolute;
@@ -75,7 +75,7 @@ body {
   color: white;
   z-index: 1;
   text-align: center;
-  border: 1px solid #ff6b6b;
+  border: 1px solid #ffffff;
   padding: 15px;
   margin: auto;
   width: 50%;
@@ -85,7 +85,7 @@ body {
   word-spacing: 3;
   line-height: 30px;
   text-transform: upper;
-  box-shadow: 0 5px 5px #777;
+  box-shadow: 0 5px 5px rgb(108, 108, 108);
 }
 #leaderboard {
   position: absolute;
@@ -99,7 +99,7 @@ body {
   color: rgb(0, 0, 0);
   font-family: fantasy;
   box-shadow: 25px 25px 5px #777;
-  background-color: antiquewhite;
+  background-color: rgb(255, 255, 255);
 }
 
 #leaderboard div {
