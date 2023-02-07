@@ -11,6 +11,7 @@ body {
   height: 120px;
   border-radius: 1px;
   width: 110px;
+  border-radius: 5%;
   position: absolute;
   bottom: 55px;
   background: url(r3.png);
@@ -19,7 +20,7 @@ body {
 }
 .carGame {
   width: 100%;
-  height: 1050px;
+  height: 900px;
   background: url(rain.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -49,6 +50,7 @@ body {
   width: 85px;
   position: relative;
   bottom: 150px;
+  border-block-end-style: ridge;
   background: url(truck1.png);
   background-repeat: no-repeat;
   background-size: 90px 100px;
@@ -56,9 +58,9 @@ body {
 .score {
   /* */
   position: absolute;
-  top:800px;
+  top:600px;
   left: 40px;
-  widows: 30px;
+  width: 30px;
   height: 200px;
   width: 140px;
   text-align: center;
@@ -68,7 +70,7 @@ body {
 }
 .startScreen {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   background: #000000;
   transform: translate(-50%, -50%);
@@ -78,7 +80,7 @@ body {
   border: 1px solid #ffffff;
   padding: 15px;
   margin: auto;
-  width: 50%;
+  width: 90%;
   cursor: pointer;
   letter-spacing: 5;
   font-size: 20px;
@@ -91,9 +93,9 @@ body {
   position: absolute;
   top: 50px;
   left: 40px;
-  widows: 30px;
-  height: 400px;
-  width: 400px;
+  width: 30px;
+  height: 500px;
+  width: 300px;
   text-align: center;
   font-size: 1.5em;
   color: rgb(0, 0, 0);
@@ -132,13 +134,14 @@ body {
   position: absolute;
   width: 50px;
   height: 50px;
+  border-radius: 50%;
   background-image: url("coin.png");
   background-size: cover;
   left: 50%; /* position the coin element in the center horizontally */
   top: 50%; /* position the coin element in the center vertically */
   transform: translate(
-    -50%,
-    -50%
+    500%,
+    50%
   ); /* move the coin element up and left by 50% of its own width and height to center it */
 }
 .game-area {

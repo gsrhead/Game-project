@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="project.css" />
-  </head>
-  <body>
-    <div class="rain-container"></div>
-
-      <h1>Instructions</h1>
-      <p>1. Press the "Start" button to begin the game.</p>
-      <p>2. Use the arrow keys to move your character.</p>
-      <p>3. Collect coins and avoid cars to increase your score.</p>
-      <p>4. Press the "ENTER" button to add your high ScoreBoard in game.</p>
-      <p>5. it will "Restart" the game to achieve new name and high score.</p>
-    </div>
-    <div class="game-container">
-      <audio id="car-sound" src="car-sound.mp3"></audio>
-      <audio id="thwomp" src="thwomp.ogg"></audio>
-      <audio id="coin" src="coin.ogg"></audio>
-    </div>
-    <div class="carGame">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="project.css" />
+</head>
+<body>
+<div class="rain-container"></div>
+  <div class="instruction-board">
+    <h1>Instructions</h1>
+    <p>1. Press the "Start" button to begin the game.</p>
+    <p>2. Use the arrow keys to move your character.</p>
+    <p>3. Collect coins and avoid cars to increase your score.</p>
+    <p>4. Press the "ENTER" button to add your high ScoreBoard in game.</p>
+    <p>5. it will "Restart" the game to achieve new name and high score.</p>
+  </div>
+  <div class="game-container">
+    <audio id="thwomp" src="thwomp.ogg"></audio>
+    <audio id="coin" src="coin.ogg"></audio>
+  </div>
+  <div class="carGame">
+    <div id="leaderboard">
       <h2>ScoreBoard</h2>
       <ul id="leaderboard-list"></ul>
     </div>
     <div class="startScreen">
-      <button id="start-button">Start Game</button>
-      <button id="end-game-button" style="display: none">End Game</button>
       <h1>CAR RACING GAME</h1>
       <p>Press ENTER to start</p>
     </div>
     <div class="gameArea"></div>
     <div class="score"></div>
     <script src="project.js"></script>
-  </body>
+</body>
 </html>
